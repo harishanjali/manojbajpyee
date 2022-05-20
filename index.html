@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookEt</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/a32e79d4f9.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="d-none" id="socialButtonContainer">
+      <div class="social-app-container d-flex flex-md-column position-fixed bg-dark rounded">
+        <div class="social-facebook social-button d-flex align-items-center justify-content-center m-2">
+          <a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a>
+        </div>
+        <div class="social-twitter social-button d-flex align-items-center justify-content-center m-2">
+          <a href="javascript:void(0)"><i class="fab fa-twitter"></i></a>
+        </div>
+        <div class="social-linkedin social-button d-flex align-items-center justify-content-center m-2">
+          <a href="javascript:void(0)"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="bg-light resp-search-bar shadow d-none fixed-top" id="mobileSearchContainer">
+      <form id="myForm">
+        <input placeholder="What are you looking for?" class="mobile-searh-input" type="text" id="mobileSearchInput">
+        <button id="closeBtn" class="close-btn border-0 bg-light position-absolute"><i class="fas fa-times"></i></button>
+      </form>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-custom navbar-dark fixed-top">
+        <a class="navbar-brand p-1 p-md-4" href="javascript:void(0)">
+          <img src="images/BookET_Logo.png" alt="logo-img">
+        </a>
+        <div class="search-bar-container d-none d-xl-block">
+          <div class="input-container position-relative search-input-el">
+            <button id="desktopSearchBtn" class="search-btn position-absolute"><i class="fas fa-search search-icon"></i></button>
+            <div id="inputContentContainer">
+              <div class="position-absolute specific-search-container d-flex justify-content-center">
+                <div class="specific-search pr-3">
+                  <h4 class="m-0 p-0">Date</h4>
+                  <input class="border-0 specific-input" type="text" placeholder="I want to go out?" autofocus>
+                </div>
+                <div class="specific-search pr-3">
+                  <h4 class="m-0 p-0">Location</h4>
+                  <input class="border-0 specific-input" type="text" placeholder="My current location">
+                </div>
+                <div class="specific-search">
+                  <h4 class="m-0 p-0">Loooking for?</h4>
+                  <input class="border-0 specific-input-3" type="text" placeholder="What are you in the mood for?">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="p-1 position-relative">
+          <button class="navbar-toggler border-0 position-absolute hamberger" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <!-- <span class="navbar-toggler-icon"></span> -->
+            <div class="animated-icon2 mt-2" id="menu"><span></span><span></span><span></span><span></span></div>
+          </button>
+          <button id="mobileSearchIcon" class="ml-3 border-0 search-btn-mobile d-lg-none"><i class="fas fa-search search-icon"></i></button>
+        </div>
+        <div class="collapse navbar-collapse pt-md-4" id="navbarNav">
+          <ul class="navbar-nav ml-auto flex-row justify-content-center">
+            <li class="nav-item mr-3">
+              <a class="nav-link" href="javascript:void(0)">
+                  <div>
+                      <img src="images/Path613.png" alt="host-event">
+                      <p class="pt-2">Host Event</p>
+                  </div>
+                  <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item mr-3">
+              <a class="nav-link" href="javascript:void(0)">
+                <div>
+                  <img src="images/Path561.png" alt="host-event">
+                  <p class="pt-2">Wish List</p>
+                </div>
+              </a>
+            </li>
+            <li class="nav-item mr-3">
+              <a class="nav-link" href="javascript:void(0)">
+                <div>
+                  <img src="images/Path611.png" alt="host-event">
+                  <p class="pt-2">Notification</p>
+                </div>
+              </a>
+            </li>
+            <li class="nav-item mr-3">
+              <div class="nav-link position-relative">
+                <div class="profile-container">
+                  <div class="profile-link">
+                    <img src="images/Group287.png" alt="profile-img">
+                  </div>
+                  <button id="arrowBtn" class="profile-btn pt-2 border-0 bg-transparent text-white">Profile<img class="arrow" src="images/Group 169.png" alt="drop-down"></button>
+                  <ul id="profileOptions" class="position-absolute d-none options">
+                    <li id="profile1" onclick="openLink(this.id)">Profile</li>
+                    <li id="profile2" onclick="openLink(this.id)">Settings</li>
+                    <li id="profile3" onclick="openLink(this.id)">Data</li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item">
+              <div class="nav-link">
+                <button id="mediumSearchIconBtn" class="search-btn search-btn-mobile d-none d-lg-block d-xl-none"><i class="fas fa-search search-icon"></i></button>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div class="container-fluid">
+        <div class="col-12 carousel-custom">
+          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators d-none d-md-block d-md-flex">
+              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img class="d-block w-100" src="images/firstImg.png" alt="First slide">
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100" src="images/firstImg.png" alt="Second slide">
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100" src="images/firstImg.png" alt="Third slide">
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"><i class="custom-arrow fas fa-arrow-left"></i></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"><i class="custom-arrow fas fa-arrow-right"></i></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+        <div class="section-head d-flex justify-content-between align-items-center pl-4 pt-4 pr-4">
+          <h1>Event Category</h1>
+          <a href="javascript:void(0)"><p>VIEW ALL</p></a>
+        </div>
+        <p class="head-underline ml-4 mt-0 d-inline-block"></p><p class="head-underline-2 ml-2 d-inline-block"></p>
+          <div class="row row-cols-sm-2 row-cols-1 row-cols-lg-4 row-cols-xl-5 row-cols-md-2 p-4">
+            <div class="col mb-2">
+              <div class="event-card">
+                <div>
+                  <h1>Music</h1>
+                  <p>24 Events Nearby</p>
+                </div>
+                <div>
+                  <button class="event-card-btn"><img class="pt-1" src="images/noun_Arrow_3134190.png" alt="arrow"></button>
+                  <img src="images/undraw_compose_music_ovo2.png" alt="music">
+                </div>
+              </div>
+            </div>
+            <div class="col mb-2">
+              <div class="event-card">
+                <div>
+                  <h1>Business & Startups</h1>
+                  <p>24 Events Nearby</p>
+                </div>
+                <div>
+                  <button class="event-card-btn"><img class="pt-1" src="images/noun_Arrow_3134190.png" alt="arrow"></button>
+                  <img src="images/undraw_business_deal_cpi9.png" alt="music">
+                </div>
+              </div>
+              
+            </div>
+            <div class="col mb-2">
+              <div class="event-card">
+                <div>
+                  <h1>Arts & Culture</h1>
+                  <p>36 Events Nearby</p>
+                </div>
+                <div>
+                  <button class="event-card-btn"><img class="pt-1" src="images/noun_Arrow_3134190.png" alt="arrow"></button>
+                  <img src="images/undraw_making_art_759c.png" alt="music">
+                </div>
+              </div>
+              
+            </div>
+            <div class="col mb-2">
+              <div class="event-card">
+                <div>
+                  <h1>Film & Media</h1>
+                  <p>36 Events Nearby</p>
+                </div>
+                <div>
+                  <button class="event-card-btn"><img class="pt-1" src="images/noun_Arrow_3134190.png" alt="arrow"></button>
+                  <img src="images/undraw_Social_ideas_re_j5v4.png" alt="music">
+                </div>
+              </div>
+            </div>
+            <div class="col mb-2">
+              <div class="event-card">
+                <div>
+                  <h1>Food and Drink</h1>
+                  <p>46 Events Nearby</p>
+                </div>
+                <div>
+                  <button class="event-card-btn"><img class="pt-1" src="images/noun_Arrow_3134190.png" alt="arrow"></button>
+                  <img src="images/undraw_special_event_4aj8.png" alt="music">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="section-head d-flex justify-content-between align-items-center pl-4 pt-4 pr-4">
+            <h1>Popular Event</h1>
+            <a href="javascript:void(0)"><p>VIEW ALL</p></a>
+          </div>
+          <p class="head-underline ml-4 mt-0 d-inline-block"></p><p class="head-underline-2 ml-2 d-inline-block"></p>
+
+          <div class="row p-4">
+            <div class="section-card col-sm-6 col-md-6 col-lg-3 col-12">
+              <div class="w-100 position-relative">
+                <img class="w-100" src="images/pexels-wendy-wei-1190295.png" alt="quatar-food">
+                <button onclick="changedToLiked(this.id)" id="card1" class="like-btn position-absolute"><i class="far fa-heart"></i></button>
+              </div>
+              <div class="position-relative">
+                <div class="description-container w-50">
+                  <span>SUN, NOV 15, 11:00 AM</span>
+                  <h4>
+                    Great Qatar Food 
+                    Festival
+                  </h4>
+                  <p>Mosman Park, Sydney</p>
+                </div>
+                <div>
+                  <a onclick="showSocialBtns()" class="position-absolute share-link" href="javascript:void(0)"><img src="images/noun_Share_2178964.png" alt="share"></a>
+                </div>
+              </div>
+              
+            </div>
+            <div class="section-card col-sm-6 col-md-6 col-lg-3 col-12">
+              <div class="w-100 position-relative">
+                <img class="w-100" src="images/card2.png" alt="quatar-food">
+                <button onclick="changedToLiked(this.id)" id="card2" class="like-btn position-absolute"><i class="far fa-heart"></i></button>
+              </div>
+              <div class="position-relative">
+                <div class="description-container w-50">
+                  <span>SUN, NOV 15, 11:00 AM</span>
+                  <h4>
+                    QAWARIB Qatar
+                    International Boat
+                    Show 2021
+                  </h4>
+                  <p>Mosman Park, Sydney</p>
+                </div>
+                <div>
+                  <a onclick="showSocialBtns()" class="position-absolute share-link" href="javascript:void(0)"><img src="images/noun_Share_2178964.png" alt="share"></a>
+                </div>
+              </div>
+              
+            </div>
+            <div class="section-card col-sm-6 col-md-6 col-lg-3 col-12">
+              <div class="w-100 position-relative">
+                <img class="w-100" src="images/card3.png" alt="quatar-food">
+                <button onclick="changedToLiked(this.id)" id="card3" class="like-btn position-absolute"><i class="far fa-heart"></i></button>
+              </div>
+              <div class="position-relative">
+                <div class="description-container w-50">
+                  <span>SUN, NOV 15, 11:00 AM</span>
+                  <h4>
+                    Commercial Bank CHI Al
+                    SHAQAB Presented by
+                    Longines
+                  </h4>
+                  <p>Mosman Park, Sydney</p>
+                </div>
+                <div>
+                  <a onclick="showSocialBtns()" class="position-absolute share-link" href="javascript:void(0)"><img src="images/noun_Share_2178964.png" alt="share"></a>
+                </div>
+              </div>
+              
+            </div>
+            <div class="section-card col-sm-6 col-md-6 col-lg-3 col-12">
+              <div class="w-100 position-relative">
+                <img class="w-100" src="images/card4.png" alt="quatar-food">
+                <button onclick="changedToLiked(this.id)" id="card4" class="like-btn position-absolute"><i class="far fa-heart"></i></button>
+              </div>
+              <div class="position-relative">
+                <div class="description-container w-50">
+                  <span>SUN, NOV 15, 11:00 AM</span>
+                  <h4>
+                    Tasty Street Qatar at 
+                    Katara Cultural Village
+                  </h4>
+                  <p>Mosman Park, Sydney</p>
+                </div>
+                <div>
+                  <a onclick="showSocialBtns()" class="position-absolute share-link" href="javascript:void(0)"><img src="images/noun_Share_2178964.png" alt="share"></a>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+          <div class="section-head d-flex justify-content-between align-items-center pl-4 pt-4 pr-4">
+            <h1>Recommended Events</h1>
+            <a href="javascript:void(0)"><p>VIEW ALL</p></a>
+          </div>
+          <p class="head-underline ml-4 mt-0 d-inline-block"></p><p class="head-underline-2 ml-2 d-inline-block"></p>
+          <div class="row p-4">
+            <div class="section-card col-sm-6 col-md-6 col-lg-3 col-12">
+              <div class="w-100 position-relative">
+                <img class="w-100" src="images/card5.png" alt="quatar-food">
+                <button onclick="changedToLiked(this.id)" id="card5" class="like-btn position-absolute"><i class="far fa-heart"></i></button>
+              </div>
+              <div class="position-relative">
+                <div class="description-container w-50">
+                  <span>SUN, NOV 15, 11:00 AM</span>
+                  <h4>
+                    The International 
+                    Handicrafts & Traditional
+                    Productions Cultural ..
+                  </h4>
+                  <p>Mosman Park, Sydney</p>
+                </div>
+                <div>
+                  <a onclick="showSocialBtns()" class="position-absolute share-link" href="javascript:void(0)"><img src="images/noun_Share_2178964.png" alt="share"></a>
+                </div>
+              </div>
+              
+            </div>
+            <div class="section-card col-sm-6 col-md-6 col-lg-3 col-12">
+              <div class="w-100 position-relative">
+                <img class="w-100" src="images/card6.png" alt="quatar-food">
+                <button onclick="changedToLiked(this.id)" id="card6" class="like-btn position-absolute"><i class="far fa-heart"></i></button>
+              </div>
+              <div class="position-relative">
+                <div class="description-container w-50">
+                  <span>SUN, NOV 15, 11:00 AM</span>
+                  <h4>
+                    International Horticultural
+                    Expo Doha
+                  </h4>
+                  <p>Mosman Park, Sydney</p>
+                </div>
+                <div>
+                  <a onclick="showSocialBtns()" class="position-absolute share-link" href="javascript:void(0)"><img src="images/noun_Share_2178964.png" alt="share"></a>
+                </div>
+              </div>
+              
+            </div>
+            <div class="section-card col-sm-6 col-md-6 col-lg-3 col-12">
+              <div class="w-100 position-relative">
+                <img class="w-100" src="images/card7.png" alt="quatar-food">
+                <button onclick="changedToLiked(this.id)" id="card7" class="like-btn position-absolute"><i class="far fa-heart"></i></button>
+              </div>
+              <div class="position-relative">
+                <div class="description-container w-50">
+                  <span>SUN, NOV 15, 11:00 AM</span>
+                  <h4>
+                    Torba Farmers Market
+                    2020
+                  </h4>
+                  <p>Mosman Park, Sydney</p>
+                </div>
+                <div>
+                  <a onclick="showSocialBtns()" class="position-absolute share-link" href="javascript:void(0)"><img src="images/noun_Share_2178964.png" alt="share"></a>
+                </div>
+              </div>
+              
+            </div>
+            <div class="section-card col-sm-6 col-md-6 col-lg-3 col-12">
+              <div class="w-100 position-relative">
+                <img class="w-100" src="images/card8.png" alt="quatar-food">
+                <button onclick="changedToLiked(this.id)" id="card8" class="like-btn position-absolute"><i class="far fa-heart"></i></button>
+              </div>
+              <div class="position-relative">
+                <div class="description-container w-50">
+                  <span>SUN, NOV 15, 11:00 AM</span>
+                  <h4>
+                    Sea Caves Water Park
+                  </h4>
+                  <p>Mosman Park, Sydney</p>
+                </div>
+                <div>
+                  <a onclick="showSocialBtns()" class="position-absolute share-link" href="javascript:void(0)"><img src="images/noun_Share_2178964.png" alt="share"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="section-head d-flex justify-content-between align-items-center pl-4 pt-4 pr-4">
+            <h1>Nearby Events</h1>
+            <a href="javascript:void(0)"><p>VIEW ALL</p></a>
+          </div>
+          <p class="head-underline ml-4 mt-0 d-inline-block"></p><p class="head-underline-2 ml-2 d-inline-block"></p>
+
+          <div class="row p-4">
+            <div class="section-card col-sm-6 col-md-6 col-lg-3 col-12">
+              <div class="w-100 position-relative">
+                <img class="w-100" src="images/card9.png" alt="quatar-food">
+                <button onclick="changedToLiked(this.id)" id="card9" class="like-btn position-absolute"><i class="far fa-heart"></i></button>
+              </div>
+              <div class="position-relative">
+                <div class="description-container w-50">
+                  <span>SUN, NOV 15, 11:00 AM</span>
+                  <h4>
+                    HOT AIR BALLOON 
+                    FLIGHTS OVER THE DOHA
+                  </h4>
+                  <p>Doha</p>
+                </div>
+                <div>
+                  <a onclick="showSocialBtns()" class="position-absolute share-link" href="javascript:void(0)"><img src="images/noun_Share_2178964.png" alt="share"></a>
+                </div>
+              </div>
+              
+            </div>
+            <div class="section-card col-sm-6 col-md-6 col-lg-3 col-12">
+              <div class="w-100 position-relative">
+                <img class="w-100" src="images/card10.png" alt="quatar-food">
+                <button onclick="changedToLiked(this.id)" id="card10" class="like-btn position-absolute"><i class="far fa-heart"></i></button>
+              </div>
+              <div class="position-relative">
+                <div class="description-container w-50">
+                  <span>SUN, NOV 15, 11:00 AM</span>
+                  <h4>
+                    Full Day Desert Safari
+                  </h4>
+                  <p>Doha, Qatar</p>
+                </div>
+                <div>
+                  <a onclick="showSocialBtns()" class="position-absolute share-link" href="javascript:void(0)"><img src="images/noun_Share_2178964.png" alt="share"></a>
+                </div>
+              </div>
+              
+            </div>
+            <div class="section-card col-sm-6 col-md-6 col-lg-3 col-12">
+              <div class="w-100 position-relative">
+                <img class="w-100" src="images/card11.png" alt="quatar-food">
+                <button onclick="changedToLiked(this.id)" id="card11" class="like-btn position-absolute"><i class="far fa-heart"></i></button>
+              </div>
+              <div class="position-relative">
+                <div class="description-container w-50">
+                  <span>SUN, NOV 15, 11:00 AM</span>
+                  <h4>
+                    North of Qatar
+                  </h4>
+                  <p>Doha, Qatar</p>
+                </div>
+                <div>
+                  <a onclick="showSocialBtns()" class="position-absolute share-link" href="javascript:void(0)"><img src="images/noun_Share_2178964.png" alt="share"></a>
+                </div>
+              </div>
+              
+            </div>
+            <div class="section-card col-sm-6 col-md-6 col-lg-3 col-12">
+              <div class="w-100 position-relative">
+                <img class="w-100" src="images/card12.png" alt="quatar-food">
+                <button onclick="changedToLiked(this.id)" id="card12" class="like-btn position-absolute"><i class="far fa-heart"></i></button>
+              </div>
+              <div class="position-relative">
+                <div class="description-container w-50">
+                  <span>SUN, NOV 15, 11:00 AM</span>
+                  <h4>
+                    Qatar History VS Future
+                  </h4>
+                  <p>Doha, Qatar</p>
+                </div>
+                <div>
+                  <a onclick="showSocialBtns()" class="position-absolute share-link" href="javascript:void(0)"><img src="images/noun_Share_2178964.png" alt="share"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="section-head d-flex justify-content-between align-items-center pl-4 pt-4 pr-4">
+            <h1>Featured Events</h1>
+            <a href="javascript:void(0)"><p>VIEW ALL</p></a>
+          </div>
+          <p class="head-underline ml-4 mt-0 d-inline-block"></p><p class="head-underline-2 ml-2 d-inline-block"></p>
+
+          <div class="row p-4">
+            <div class="section-card col-sm-6 col-md-6 col-lg-3 col-12">
+              <div class="w-100 position-relative">
+                <img class="w-100" src="images/card13.png" alt="quatar-food">
+                <button onclick="changedToLiked(this.id)" id="card13" class="like-btn position-absolute"><i class="far fa-heart"></i></button>
+              </div>
+              <div class="position-relative">
+                <div class="description-container w-50">
+                  <span>SUN, NOV 15, 11:00 AM</span>
+                  <h4>
+                    Qatar Museum Tour
+                  </h4>
+                  <p>Doha, Qatar</p>
+                </div>
+                <div>
+                  <a onclick="showSocialBtns()" class="position-absolute share-link" href="javascript:void(0)"><img src="images/noun_Share_2178964.png" alt="share"></a>
+                </div>
+              </div>
+              
+            </div>
+            <div class="section-card col-sm-6 col-md-6 col-lg-3 col-12">
+              <div class="w-100 position-relative">
+                <img class="w-100" src="images/card14.png" alt="quatar-food">
+                <button onclick="changedToLiked(this.id)" id="card14" class="like-btn position-absolute"><i class="far fa-heart"></i></button>
+              </div>
+              <div class="position-relative">
+                <div class="description-container w-50">
+                  <span>SUN, NOV 15, 11:00 AM</span>
+                  <h4>
+                    Longines Global
+                    Champions Tour - Doha
+                  </h4>
+                  <p>Blue Mountains, NSW</p>
+                </div>
+                <div>
+                  <a onclick="showSocialBtns()" class="position-absolute share-link" href="javascript:void(0)"><img src="images/noun_Share_2178964.png" alt="share"></a>
+                </div>
+              </div>
+              
+            </div>
+            <div class="section-card col-sm-6 col-md-6 col-lg-3 col-12">
+              <div class="w-100 position-relative">
+                <img class="w-100" src="images/card15.png" alt="quatar-food">
+                <button onclick="changedToLiked(this.id)" id="card15" class="like-btn position-absolute"><i class="far fa-heart"></i></button>
+              </div>
+              <div class="position-relative">
+                <div class="description-container w-50">
+                  <span>SUN, NOV 15, 11:00 AM</span>
+                  <h4>
+                    Qatar Sports and 
+                    Educational Tour
+                  </h4>
+                  <p>Surry Hills, Qatar</p>
+                </div>
+                <div>
+                  <a onclick="showSocialBtns()" class="position-absolute share-link" href="javascript:void(0)"><img src="images/noun_Share_2178964.png" alt="share"></a>
+                </div>
+              </div>
+              
+            </div>
+            <div class="section-card col-sm-6 col-md-6 col-lg-3 col-12">
+              <div class="w-100 position-relative">
+                <img class="w-100" src="images/card16.png" alt="quatar-food">
+                <button onclick="changedToLiked(this.id)" id="card16" class="like-btn position-absolute"><i class="far fa-heart"></i></button>
+              </div>
+              <div class="position-relative">
+                <div class="description-container w-50">
+                  <span>SUN, NOV 15, 11:00 AM</span>
+                  <h4>
+                    Shaikh faisal Camal
+                    Race track
+                  </h4>
+                  <p>Surry Hills, Qatar</p>
+                </div>
+                <div>
+                  <a onclick="showSocialBtns()" class="position-absolute share-link" href="javascript:void(0)"><img src="images/noun_Share_2178964.png" alt="share"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="section-head d-flex justify-content-between align-items-center pl-4 pt-4 pr-4">
+            <h1>Featured Organizers</h1>
+            <a href="javascript:void(0)"><p>VIEW ALL</p></a>
+          </div>
+          <p class="head-underline ml-4 mt-0 d-inline-block"></p><p class="head-underline-2 ml-2 d-inline-block"></p>
+
+          <div class="row row-cols-lg-4 row-cols-xl-5 row-cols-sm-2 row-cols-1 p-4">
+            <div class="col">
+              <div class="border rounded d-flex flex-column p-1 mb-2">
+                <button id="removeCard1" onclick="removeCard(this.id)" class="align-self-end border-0 align-self-end bg-transparent"><img src="images/noun_Close_65508.png" alt="close"></button>
+                <div class="p-3 organizers-card rounded d-flex flex-column justify-content-center align-items-center">
+                  <div class="pb-5 pt-3 d-flex flex-column justify-content-center align-items-center">
+                    <img src="images/org-card1.png" alt="green-leaders">
+                    <h5 class="text-center pt-3">Qatar Green Leaders</h5>
+                    <p>273 Followers</p>
+                  </div>
+                  <button class="follow-btn">Follow</button>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="border rounded d-flex flex-column p-1 mb-2">
+                <button id="removeCard2" onclick="removeCard(this.id)" class="align-self-end border-0 align-self-end bg-transparent"><img src="images/noun_Close_65508.png" alt="close"></button>
+                <div class="p-3 organizers-card rounded d-flex flex-column justify-content-center align-items-center">
+                  <div class="pb-5 pt-3 d-flex flex-column justify-content-center align-items-center">
+                    <img src="images/org-card2.png" alt="green-leaders">
+                    <h5 class="text-center pt-3">MOC Doha 2021
+                      Managing...</h5>
+                    <p>273 Followers</p>
+                  </div>
+                  <button class="follow-btn">Follow</button>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="border rounded d-flex flex-column p-1 mb-2">
+                <button id="removeCard3" onclick="removeCard(this.id)" class="align-self-end border-0 align-self-end bg-transparent"><img src="images/noun_Close_65508.png" alt="close"></button>
+                <div class="p-3 organizers-card rounded d-flex flex-column justify-content-center align-items-center">
+                  <div class="pb-5 pt-3 d-flex flex-column justify-content-center align-items-center">
+                    <img src="images/Icon.png" alt="green-leaders">
+                    <h5 class="text-center pt-3">Waxdale Certified
+                      Launcher Program</h5>
+                    <p>273 Followers</p>
+                  </div>
+                  <button class="follow-btn">Follow</button>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="border rounded d-flex flex-column p-1 mb-2">
+                <button id="removeCard4" onclick="removeCard(this.id)" class="align-self-end border-0 align-self-end bg-transparent"><img src="images/noun_Close_65508.png" alt="close"></button>
+                <div class="p-3 organizers-card rounded d-flex flex-column justify-content-center align-items-center">
+                  <div class="pb-5 pt-3 d-flex flex-column justify-content-center align-items-center">
+                    <img src="images/Icon.png" alt="green-leaders">
+                    <h5 class="text-center pt-3">CH2 Agency
+                      Bangalore</h5>
+                    <p>273 Followers</p>
+                  </div>
+                  <button class="follow-btn">Follow</button>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="border rounded d-flex flex-column p-1 mb-2">
+                <button id="removeCard5" onclick="removeCard(this.id)" class="align-self-end border-0 align-self-end bg-transparent"><img src="images/noun_Close_65508.png" alt="close"></button>
+                <div class="p-3 organizers-card rounded d-flex flex-column justify-content-center align-items-center">
+                  <div class="pb-5 pt-3 d-flex flex-column justify-content-center align-items-center">
+                    <img src="images/Icon.png" alt="green-leaders">
+                    <h5 class="text-center pt-3">CH2 Agency
+                      Bangalore</h5>
+                    <p>273 Followers</p>
+                  </div>
+                  <button class="follow-btn">Follow</button>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      <footer>
+        <div class="container-fluid pl-4">
+          <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="pb-4">
+                <img class="m-2" src="images/BookET_Logo.png" alt="footer-logo">
+                <h1 class="m-2">Are you an event company?</h1>
+                <button class="join-us-btn m-2">Join Us</button>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="quick-link-container pb-4">
+                <h1>Quick Link</h1>
+                <a href="javascript:void(0)"><p>About Us</p></a>
+                <a href="javascript:void(0)"><p>Partners</p></a>
+                <a href="javascript:void(0)"><p>Contact Us</p></a>
+                <a href="javascript:void(0)"><p>Privacy Policy</p></a>
+                <a href="javascript:void(0)"><p>Terms of Service</p></a>
+                <a href="javascript:void(0)"><p>Warranty Policy</p></a>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="get-in-touch-container pb-4">
+                <h1>Get in Touch</h1>
+                <div class="d-flex">
+                  <!-- <img src="images/noun_Location_2979144.png" alt="location"> -->
+                  <i class="fas fa-map-marker-alt pt-1"></i>
+                  <a href="javascript:void(0)"><p class="pl-2">Sherin Tower 857, Sydney </p></a>
+                </div>
+                <div class="d-flex">
+                  <!-- <img src="images/noun_Email_3715599.png" alt="location"> -->
+                  <i class="fas fa-envelope pt-1"></i>
+                  <a href="javascript:void(0)"><p class="pl-2">info@booket.com</p></a>
+                </div>
+                <div class="d-flex">
+                  <!-- <img src="images/noun_Email_3715599.png" alt="location"> -->
+                  <i class="fas fa-phone-alt pt-1"></i>
+                  <a href="tel:+91-9876543210"><p class="pl-2">+91-9876543210</p></a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-lg-4 col-xl-3 col-md-6 col-sm-7">
+              <div class="follow-download-sec">
+                <div class="follow-us">
+                  <h1>Follow Us</h1>
+                  <a href="javascript:void(0)"><i class="fab fa-instagram fa-2x pr-3"></i></a>
+                  <a href="javascript:void(0)"><i class="fab fa-twitter fa-2x pr-3"></i></a>
+                  <a href="javascript:void(0)"><i class="fab fa-facebook-f fa-2x"></i></a>
+                </div>
+                <div class="download-app pt-5">
+                  <h1>Download App</h1>
+                  <div class="d-sm-flex">
+                    <a class="inline-block" href="https://www.apple.com/in/app-store/" target="_blank"><div class="p-2 mr-2 mb-2 apple-app-container d-flex justify-content-center align-items-center">
+                      <div>
+                        <img src="images/applelogo.png" alt="apple-logo">
+                      </div>
+                      <div class="text-white pl-2">
+                        <span>Download on the</span>
+                        <h2>App Store</h2>
+                      </div>
+                    </div></a>
+                    <a class="inline-block" href="https://play.google.com/" target="_blank"><div class="goolge-container apple-app-container d-flex justify-content-center align-items-center">
+                      <div>
+                        <img src="images/logo.png" alt="google-play-logo">
+                      </div>
+                      <div class="text-white pl-2">
+                        <span>GET IT ON</span>
+                        <h2>Google Play</h2>
+                      </div>
+                    </div></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </footer>
+      <script src="js/index.js"></script>
+</body>
+</html>
